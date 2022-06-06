@@ -49,6 +49,63 @@ This way the container will sleep for 5 seconds.
 This command above will print the /etc/hosts content.
 
 
+## Docker Run
+
+`Docker run image:tag`
+
+To run a specific version of an app, just add `:`and the version.
+
+I.E.
+
+`Docker run redis:4.0`
+
+This command will run redis version 4.0
+
+If no tag is specified the default tag will be `latest`
+
+
+at (Docker Hub)[https://hub.docker.com/] We need to look for `supported tags`.
+
+⚠️ Attention:
+
+Containers don't listen for STDIN (Standard Input) by default
+
+If we want to listen for user input and prompt things into the terminal we should use:
+
+`Docker run -it <image>`
+
+`-i` stands for: `interactive mode`
+
+`-t` stands for: `sudo Terminal`
+
+Using ports
+
+`Docker run -p <external_port>:<internal_port> <image>`
+
+To persist data outside a container we need to specify the external folder as below:
+
+`Docker run -v path/to/persistent/data <image>`
+
+To see all details about a container run:
+
+`Docker inspect <container_name>`
+
+This will print all the details of the container.
+
+To see the logs of a specific container run:
+
+`Docker logs <container_name>`
+
+
+
+
+
+
+
+
+
+
+
 
 
 
