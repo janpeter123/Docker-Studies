@@ -159,6 +159,13 @@ You will see the environment variables inside `"Config"->"Env"``
 
 
 
+## Docker compose
+
+Is used to setup a complex application, running several containers with one command.
+
+It's applicable when running containers in only one host.
+
+
 
 
 
