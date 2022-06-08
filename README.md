@@ -40,7 +40,54 @@ If you want to execute some system specific command you can run:
 
 `Docker run ubuntu sleep 5`
 
+We can change this by creating a dockerfile and specifying on it
+
+Dockerfile example:
+
+```
+FROM ubuntu
+
+CMD sleep 5
+```
+
+OR
+
+```
+FROM ubuntu
+
+CMD ["sleep","5"]
+```
+
+
 This way the container will sleep for 5 seconds.
+
+
+If we change CMD by ENTRYPOINT the container will as much as we need
+
+
+```
+FROM ubuntu
+
+ENTRYPOINT ["sleep"]
+```
+
+Running
+
+`Docker run sleeper-image 10` 
+
+Will make the container sleepy for 10 seconds
+
+BUT if we don't specify anything we will get an error, so we need to add CMD after the entrypoint as a default parameter such as:
+
+```
+FROM ubuntu
+
+ENTRYPOINT ["sleep"]
+
+CMD["1"]
+```
+
+
 
 `Docker exec <container_name> <command>` This executes a command inside the container such as:
 
@@ -95,6 +142,22 @@ This will print all the details of the container.
 To see the logs of a specific container run:
 
 `Docker logs <container_name>`
+
+Adding environment variables to a Docker container:
+After modifying the application run:
+
+`Docker run -e APP_COLOR=red <image>:<tag>`
+
+`-e` stands for environment variable.
+
+To inspect environment varialbes of a container use
+
+`Docker inspect <container_name>`
+
+You will see the environment variables inside `"Config"->"Env"``
+
+
+
 
 
 
