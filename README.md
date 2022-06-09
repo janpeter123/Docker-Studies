@@ -154,7 +154,7 @@ To inspect environment varialbes of a container use
 
 `Docker inspect <container_name>`
 
-You will see the environment variables inside `"Config"->"Env"``
+You will see the environment variables inside ` "Config"->"Env" `
 
 
 
@@ -165,13 +165,60 @@ Is used to setup a complex application, running several containers with one comm
 
 It's applicable when running containers in only one host.
 
+There are 3 Versions.
+Version '1.0' , '2.0' and '3.0'
 
 
 
+## Docker Engine
+
+Docker Engine is simply reffered to a host with Docker installed on it.
+
+Docker CLI doesn't need to be on the same host to run a container.
+
+We can access a container in a remote location with:
+
+` Docker -H=<remote_docker_ip>:<port> run <image> `  
+  
+
+## Namespaces
+
+Namespaces isolate one workspace from another. They provide isolation between containers.
 
 
+## Cgroups
 
+Are used to restrict the amount of resources a container can use.
 
+Container can't take more of the 50% of the cpu
+
+`Docker run --cpus=.5 <image>`
+
+Container can't use more than 100 mb of memory
+
+`Docker run --memory=100m <image>`
+
+## Running commands inside docker container
+
+`Docker exec <container_id> <command>`
+
+example
+
+`Docker exec 5affb ps -eaf`
+
+## Creating volume
+
+`Docker volume create data_volume`
+
+How to run an image using a volume
+
+Old Way:
+
+`Docker run -v data_volume`
+
+New Way:
+
+`Docker run --mount type=bind,source = /data/mysql,target=/var/lib/mysql mysql`
 
 
 
